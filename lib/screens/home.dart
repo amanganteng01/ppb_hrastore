@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hrastore_rahman/screens/halamanutama.dart';
 import 'package:hrastore_rahman/screens/profilepage.dart';
 
 class HomePage extends StatefulWidget {
@@ -12,7 +13,7 @@ class _HomePageState extends State<HomePage> {
   int _selectedindex = 0;
 
   final List<Widget> _halaman = const [
-    profilpage(),
+    HalamanUtama(),
     Center(
       child: Text('Ini Hakaman Bookmark'),
     ),
