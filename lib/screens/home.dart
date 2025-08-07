@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hrastore_rahman/screens/profilepage.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -11,18 +12,14 @@ class _HomePageState extends State<HomePage> {
   int _selectedindex = 0;
 
   final List<Widget> _halaman = const [
-    Center(
-      child: Text('Ini Halaman Beranda'),
-    ),
+    profilpage(),
     Center(
       child: Text('Ini Hakaman Bookmark'),
     ),
     Center(
       child: Text('Ini Halaman Cart'),
     ),
-    Center(
-      child: Text('Ini Halaman Profile'),
-    ),
+    profilpage(),
   ];
 
   @override

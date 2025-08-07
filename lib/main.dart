@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hrastore_rahman/screens/home.dart';
 import 'package:hrastore_rahman/screens/login.dart';
 
 void main() {
@@ -17,7 +18,7 @@ class MainApp extends StatelessWidget {
         seedColor: Colors.black,
       )),
       debugShowCheckedModeBanner: false,
-      home: LoginPage(),
+      home: HomePage(),
     );
   }
 }
