@@ -26,8 +26,8 @@ class _LoginPageState extends State<LoginPage> {
         child: Card(
           elevation: 8,
           child: Container(
-            padding: EdgeInsets.all(32.0),
-            constraints: BoxConstraints(
+            padding: const EdgeInsets.all(32.0),
+            constraints: const BoxConstraints(
               maxWidth: 350,
             ),
             child: Form(
@@ -39,7 +39,7 @@ class _LoginPageState extends State<LoginPage> {
                     const FlutterLogo(
                       size: 100,
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 24,
                     ),
                     Text(
@@ -62,7 +62,7 @@ class _LoginPageState extends State<LoginPage> {
                         if (value == null || value.isEmpty) {
                           return 'Email tidak boleh kosong';
                         }
-                        final emailRegex =
+                        const emailRegex =
                             r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9,-]+\.[a-zA-Z]{2,}$';
                         final emailvalid = RegExp(emailRegex).hasMatch(value);
                         if (!emailvalid) {
@@ -77,8 +77,8 @@ class _LoginPageState extends State<LoginPage> {
                       decoration: InputDecoration(
                         labelText: 'Password',
                         hintText: 'Masukkan password disini!',
-                        prefixIcon: Icon(Icons.lock_outline_rounded),
-                        border: OutlineInputBorder(),
+                        prefixIcon: const Icon(Icons.lock_outline_rounded),
+                        border: const OutlineInputBorder(),
                         suffixIcon: IconButton(
                             onPressed: () {
                               setState(() {

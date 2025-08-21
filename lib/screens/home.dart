@@ -17,18 +17,12 @@ class _HomePageState extends State<HomePage> {
     Center(
       child: Text('Ini Hakaman Bookmark'),
     ),
-    Center(
-      child: Text('Ini Halaman Cart'),
-    ),
     profilpage(),
   ];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('HRA Store'),
-      ),
       body: _halaman[_selectedindex],
       bottomNavigationBar: NavigationBar(
           animationDuration: const Duration(
@@ -47,17 +41,13 @@ class _HomePageState extends State<HomePage> {
               label: 'Beranda',
             ),
             NavigationDestination(
-                icon: Icon(Icons.bookmark_border_outlined),
-                selectedIcon: Icon(Icons.bookmark_rounded),
-                label: 'bookmark'),
-            NavigationDestination(
-                icon: Icon(Icons.shopping_bag_outlined),
-                selectedIcon: Icon(Icons.shopping_bag),
-                label: 'cart'),
+                icon: Icon(Icons.history_outlined),
+                selectedIcon: Icon(Icons.history_rounded),
+                label: 'Riwayat'),
             NavigationDestination(
                 icon: Icon(Icons.person_outline_rounded),
                 selectedIcon: Icon(Icons.person_rounded),
-                label: 'profile'),
+                label: 'Profil'),
           ]),
     );
   }
