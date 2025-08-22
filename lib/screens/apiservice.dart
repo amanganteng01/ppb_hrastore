@@ -6,7 +6,7 @@ class Apiservice {
 
   //LOGIN
   Future<String> login(String email, String password) async {
-    final Response = await http.post(
+    final response = await http.post(
       Uri.parse("$baseUrl/login"),
       headers: {"Content-Type": "application/json"},
       body: json.encode({
@@ -15,14 +15,14 @@ class Apiservice {
       }),
     );
 
-    print("Status Code : ${Response.statusCode}");
-    print("Response Body : ${Response.body}");
+    print("Status Code : ${response.statusCode}");
+    print("Response Body : ${response.body}");
     
-    if (Response.statusCode == 200){
-      final data = json.decode(Response.body);
+    if (response.statusCode == 200){
+      final data = json.decode(response.body);
       return data["token"];
     }else {
-      final error = json.decode(Response.body);
+      final error = json.decode(response.body);
       throw Exception(error["error"] ?? "Login gagal");
     }
   }
