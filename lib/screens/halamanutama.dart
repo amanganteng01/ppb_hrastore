@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 
 class HalamanUtama extends StatelessWidget {
-  const HalamanUtama({super.key});
+  final String token;
+  final int userId;
+
+  const HalamanUtama({super.key, required this.token, required this.userId});
 
   Widget _gap() => const SizedBox(
         height: 16,

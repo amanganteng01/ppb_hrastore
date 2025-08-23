@@ -1,6 +1,8 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
+import 'package:hrastore_rahman/screens/apiservice.dart';
+import 'package:hrastore_rahman/screens/halamanutama.dart';
 import 'package:hrastore_rahman/screens/home.dart';
 
 class LoginPage extends StatefulWidget {
@@ -12,8 +14,13 @@ class LoginPage extends StatefulWidget {
 
 class _LoginPageState extends State<LoginPage> {
   final GlobalKey<FormState> _kuncifrom = GlobalKey<FormState>();
+  final Apiservice apiservice = Apiservice();
+
+  final TextEditingController emailController = TextEditingController();
+  final TextEditingController passwordController = TextEditingController();
 
   bool _jikapasswordterlihat = false;
+  bool _isLoading = false;
 
   Widget _gap() => const SizedBox(
         height: 16,
@@ -62,12 +69,6 @@ class _LoginPageState extends State<LoginPage> {
                         if (value == null || value.isEmpty) {
                           return 'Email tidak boleh kosong';
                         }
-                        const emailRegex =
-                            r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9,-]+\.[a-zA-Z]{2,}$';
-                        final emailvalid = RegExp(emailRegex).hasMatch(value);
-                        if (!emailvalid) {
-                          return 'Format email tidak valid';
-                        }
                         return null;
                       },
                     ),
@@ -109,25 +110,45 @@ class _LoginPageState extends State<LoginPage> {
                               backgroundColor: Colors.blue,
                               shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(4))),
-                          onPressed: () {
-                            if (_kuncifrom.currentState?.validate() ?? false) {
-                              Navigator.pushReplacement(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) => const HomePage()));
+                          onPressed: _isLoading
+                            ? null
+                            : () async {
+                              if (_kuncifrom.currentState?.validate() ?? false) {
+                                setState(() => _isLoading = true);
+                                try {
+                                  String token = await apiservice.login(
+                                    emailController.text.trim(), 
+                                    passwordController.text.trim(),
+                                  );
+                                  if(!mounted) return;
+                                  Navigator.pushReplacement(
+                                    context, 
+                                    MaterialPageRoute(
+                                      builder: (_) => HalamanUtama(token: token, userId: 2),
+                                    ),
+                                  );
+                                }catch (e) {
+                                  if (!mounted) return;
+                                  ScaffoldMessenger.of(context).showSnackBar(
+                                    SnackBar(
+                                      content: Text('Login gagal: $e'),
+                                    ),
+                                  );
+                                } finally {
+                                  setState(() => _isLoading = false);
+                              }
                             }
                           },
-                          child: const Padding(
-                            padding: EdgeInsets.all(10),
-                            child: Text(
-                              'Masuk',
-                              style: TextStyle(
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.bold,
-                                  color: Colors.white),
+                          child: _isLoading
+                              ? const CircularProgressIndicator(
+                                  color: Colors.white,
+                                )
+                              : const Text('Login', style: TextStyle(
+                                fontSize: 16,
                             ),
-                          )),
-                    )
+                          ),
+                        ),
+                    ),
                   ],
                 ),
               ),
