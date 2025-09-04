@@ -26,8 +26,7 @@ class HalamanUtama extends StatelessWidget {
       body: SingleChildScrollView(
         child:Stack(
           children: [
-            Container(
-              height: MediaQuery.of(context).size.height * 0.23,
+            Container(              height: MediaQuery.of(context).size.height * 0.23,
               decoration: const BoxDecoration(
                 color: Colors.lightBlue,
                 borderRadius: BorderRadius.only(

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:hrastore_rahman/screens/login.dart';
-
 void main() {
   runApp(const MainApp());
 }

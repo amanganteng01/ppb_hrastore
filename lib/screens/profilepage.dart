@@ -23,148 +23,79 @@ class profilpage extends StatelessWidget {
       body: SingleChildScrollView(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Container(
-              height: MediaQuery.of(context).size.height * 0.25,
               width: double.infinity,
-              decoration: const BoxDecoration(
-                  color: Colors.blue,
-                  borderRadius: BorderRadius.only(
-                    bottomLeft: Radius.circular(36),
-                    bottomRight: Radius.circular(36),
-                  )),
-              child: Padding(
-                padding: EdgeInsets.all(32),
-                child: Row(
-                  children: [
-                    const CircleAvatar(
-                      radius: 50,
-                      backgroundColor: Colors.white,
-                      backgroundImage: AssetImage('asset/profil.jpg'),
-                    ),
-                    _gap(),
-                    SizedBox(
-                      height: MediaQuery.of(context).size.height,
-                      width: MediaQuery.of(context).size.width * 0.6,
-                      child: const Padding(
-                        padding: EdgeInsets.symmetric(vertical: 24),
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              "Rahman Nur Padilah",
-                              style: TextStyle(
-                                fontSize: 14,
-                              ),
-                            ),
-                            SizedBox(
-                              height: 4,
-                            ),
-                            Text(
-                              "Petugas",
-                              style: TextStyle(fontSize: 12),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
-                  ],
+              height: MediaQuery.of(context).size.height * 0.1,
+              decoration: const BoxDecoration(),
+              child: const Center(
+                child: Text("Profile",
+                style: TextStyle(
+                  fontSize: 24
+                ),),
+              ),
+            ),
+            Container(
+              width: double.infinity,
+              height: MediaQuery.of(context).size.height * 0.2,
+              decoration: const BoxDecoration(),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                Container(
+                  height: MediaQuery.of(context).size.height * 0.2,
+                  width: MediaQuery.of(context).size.width * 0.25,
+                 child: const Padding(
+                  padding: EdgeInsets.only(left: 24),
+                    child: CircleAvatar(),
+                  ),
                 ),
-              ),
-            ),
-            _gap(),
-            SizedBox(
-              height: MediaQuery.of(context).size.height * 0.5,
-              child: ListView.builder(
-                  itemCount: tanya.length,
-                  shrinkWrap: true,
-                  physics: const NeverScrollableScrollPhysics(),
-                  itemBuilder: (context, index) {
-                    return Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 24),
-                      child: SizedBox(
-                        width: double.infinity,
-                        height: 40,
-                        child: Row(
-                          children: [
-                            SizedBox(
-                              width: MediaQuery.of(context).size.width * 0.3,
-                              height: MediaQuery.of(context).size.height * 1,
-                              child: Row(
-                                children: [Text(tanya[index])],
-                              ),
-                            ),
-                            SizedBox(
-                              width: MediaQuery.of(context).size.width * 0.05,
-                              height: MediaQuery.of(context).size.height * 1,
-                              child: const Row(
-                                children: [Text(':')],
-                              ),
-                            ),
-                            SizedBox(
-                              width: MediaQuery.of(context).size.width * 0.55,
-                              height: MediaQuery.of(context).size.height * 1,
-                              child: Row(
-                                children: [
-                                  Text(jawab[index]),
-                                ],
-                              ),
-                            ),
-                          ],
+                SizedBox(
+                  height: MediaQuery.of(context).size.height * 0.2,
+                  width: MediaQuery.of(context).size.width * 0.6,
+                  child: const Padding(
+                    padding: EdgeInsets.only(left: 12),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text("Rahman Nurpadilah",
+                          style: TextStyle(
+                          fontSize: 24
+                          ),
                         ),
-                        // decoration: BoxDecoration(
-                        //   border: Border.symmetric(horizontal: BorderSide()),
-                        // ),
-                      ),
-                    );
-                  }),
+                        SizedBox(
+                          height: 6,
+                        ),
+                        Text("Rahman029@gmail.com",
+                          style: TextStyle(
+                          fontSize: 20
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+                SizedBox(
+                  height: MediaQuery.of(context).size.height * 0.15,
+                  width: MediaQuery.of(context).size.width * 0.15,
+                 child: const Padding(
+                  padding: EdgeInsets.only(right: 24),
+                    child: CircleAvatar(),
+                  ),
+                ),
+              ],
             ),
-            _gap(),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 24),
-              child: SizedBox(
-                width: double.infinity,
-                height: 40,
-                child: ElevatedButton(
-                    onPressed: () {},
-                    style: ElevatedButton.styleFrom(
-                        backgroundColor: Colors.blue,
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(16),
-                          side: const BorderSide(color: Colors.black, width: 1),
-                        )),
-                    child: const Text(
-                      'Edit Profil',
-                      style: TextStyle(color: Colors.black),
-                    )),
+          ),
+          const Padding(
+            padding: EdgeInsets.only(left: 24),
+            child: Text("Account",
+              style: TextStyle(
+                fontSize: 20
               ),
             ),
-            _gap(),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 24),
-              child: SizedBox(
-                width: double.infinity,
-                height: 40,
-                child: ElevatedButton(
-                    onPressed: () {
-                      Navigator.pushAndRemoveUntil(context,
-                        MaterialPageRoute(builder: (context) => const LoginPage()
-                        ), (Route) => false
-                      );
-                    },
-                    style: ElevatedButton.styleFrom(
-                        backgroundColor: Colors.red,
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(16),
-                          side: const BorderSide(color: Colors.black, width: 1),
-                        )),
-                    child: const Text(
-                      'Logout',
-                      style: TextStyle(color: Colors.black),
-                    )),
-              ),
-            )
+          )
           ],
         ),
       ),
