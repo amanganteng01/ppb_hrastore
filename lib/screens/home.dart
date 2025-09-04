@@ -3,7 +3,10 @@ import 'package:hrastore_rahman/screens/halamanutama.dart';
 import 'package:hrastore_rahman/screens/profilepage.dart';
 
 class HomePage extends StatefulWidget {
-  const HomePage({super.key});
+  final String token;
+  final int userId;
+
+  const HomePage({super.key, required this.token, required this.userId});
 
   @override
   State<HomePage> createState() => _HomePageState();
@@ -12,13 +15,17 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   int _selectedindex = 0;
 
-  final List<Widget> _halaman = const [
-    HalamanUtama(),
-    Center(
-      child: Text('Ini Hakaman Bookmark'),
-    ),
-    profilpage(),
-  ];
+  late final List<Widget> _halaman;
+
+  @override
+  void initState() {
+    super.initState();
+    _halaman = [
+      HalamanUtama(token: widget.token, userId: widget.userId,),
+      const Center(child: Text('Ini Halaman Bookmark'),),
+      const profilpage(),
+    ];
+  }
 
   @override
   Widget build(BuildContext context) {

@@ -1,8 +1,5 @@
-import 'dart:io';
-
 import 'package:flutter/material.dart';
 import 'package:hrastore_rahman/screens/apiservice.dart';
-import 'package:hrastore_rahman/screens/halamanutama.dart';
 import 'package:hrastore_rahman/screens/home.dart';
 
 class LoginPage extends StatefulWidget {
@@ -124,7 +121,7 @@ class _LoginPageState extends State<LoginPage> {
                                   Navigator.pushReplacement(
                                     context, 
                                     MaterialPageRoute(
-                                      builder: (_) => HalamanUtama(token: token, userId: 2),
+                                      builder: (_) => HomePage(token: token, userId: 2),
                                     ),
                                   );
                                 }catch (e) {
